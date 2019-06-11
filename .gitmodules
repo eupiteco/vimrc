@@ -1,0 +1,3 @@
+[submodule "plugins-folder/bundle/ag.vim"]
+	path = plugins-folder/bundle/ag.vim
+	url = https://github.com/rking/ag.vim.git

@@ -4,3 +4,6 @@
 [submodule "plugins-folder/bundle/ctrlp.vim"]
 	path = plugins-folder/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "plugins-folder/bundle/vim-es6"]
+	path = plugins-folder/bundle/vim-es6
+	url = https://github.com/isRuslan/vim-es6.git

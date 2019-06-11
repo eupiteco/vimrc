@@ -1,47 +1,119 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" The great vimrc from Piteco
-"
-" Maintainer
-" 	Piteco - eupiteco AT gmail DOT com
-"
-" Repository
-" 	https://github.com/eupiteco/vimrc
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" init plugins
+execute pathogen#infect()
 
-" numbering lines
+" linhas no topo e fundo da tela
+set so=7
+
+" numerando as linhas
 set number
-set relativenumber " lines are counted from and to the current one
+set relativenumber
 
-" identation
+" filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set smarttab
 
-" hilight search while typing at the commandoline
+"sinaliza buscas enquanto escreve e os resultados
 set incsearch
 set hlsearch
 
-" colors
-syntax on
-colorscheme onedark
+"muda o diretório autmoaticamente para o arquivo atual
 
-" hilight the current line
+"cores 
+syntax on
+colorscheme onehalfdark
+hi Normal guibg=NONE ctermbg=NONE
+
+"sinaliza linha atual
 set cursorline
 
-" disable swaps
+"desabilita swaps
 set noswapfile
 
-" set a list of non-visible chars
-set list
+"mostra caracteres invisíveis
 set listchars=tab:\|\ ,trail:~,extends:>,precedes:<,space:·
+" set list
 
-" persistent undo history
+"persistent undo
+set undodir='/home/eupiteco/.vim/undo'
 set undofile
-set undodir=~/.vim/undodir
 
-" netrw file tree
-let g:netrw_liststyle = 3 " treeview
-let g:netrw_banner = 0 " disable the banner
-let g:netrw_browse_split = 4 " opens in the last used buffer
-let g:netrw_winsize = 25 " tree width in %
+" Native filetree
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+
+""""""""""""
+" Commands "
+""""""""""""
+"use bangs so it does not warn about resetting commands
+command! Vrc vs ~/.vimrc
+command! Srv source ~/.vimrc
+
+"""""""""""""""
+" Keybindings "
+"""""""""""""""
+" map not to junp lines
+vmap k gk
+vmap j gj
+nmap k gk
+nmap j gj
+
+" Copy to clipboard
+vmap <C-c> "+y
+
+" Save, quit edit, bufferlist etc
+nmap <Leader>q :q!<Enter>
+nmap <Leader>Q :wqa!<Enter>
+nmap <Leader>t :w<Enter>:b#<Enter>
+nmap <Leader>w :wa<Enter>
+
+" Auto parenteses, chaves e colchetes
+imap {<Return> {<Return>}<Esc>
+imap (<Return> (<Return>)<Esc>
+imap [<Return> [<Return>]<Esc>
+imap {<Space> {}<Esc>i
+imap (<Space> ()<Esc>i
+imap [<Space> []<Esc>i
+imap "<Space> ""<Esc>i
+imap '<Space> ''<Esc>i
+
+" Wrap com parenteses, chaves etc
+vmap {} c{}<Esc>P
+vmap [] c[]<Esc>P
+vmap () c()<Esc>P
+vmap "" c""<Esc>P
+vmap '' c''<Esc>P
+
+"""""""""""
+" Plugins "
+"""""""""""
+" CTRLP
+let g:crtlp_map = '<c-h>'
+let g:ctrlp_custom_ignore = {
+	\ 'dir': 'node_modules',
+	\}
+" Lightline
+let g:lightline = {
+			\'colorscheme': 'onehalfdark',
+			\'active': {
+			\  'left': [['mode', 'paste'],
+			\           ['readonly', 'filename', 'modified']],
+			\  'right': [['lineinfo'],
+			\           ['percent'],
+			\           ['gitbranch','filetype']]
+			\},
+			\'inactive': {
+			\  'left': [['filename', 'modified']]
+			\},
+			\'component_function': {
+			\  'gitbranch': 'gitbranch#name'
+			\  },
+			\}
+
+"""""""""
+" Nextt "
+"""""""""
+autocmd BufRead,BufNewfile /home/eupiteco/nextt/classdojo/**/* nmap <Leader>p :Prettier<Enter>

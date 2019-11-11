@@ -6,7 +6,22 @@
 	url = https://github.com/kien/ctrlp.vim.git
 [submodule "plugins-folder/bundle/vim-es6"]
 	path = plugins-folder/bundle/vim-es6
-	url = https://github.com/isRuslan/vim-es6.git
+	url = https://github.com/isRuslan/vim-es6
 [submodule "plugins-folder/bundle/lightline.vim"]
 	path = plugins-folder/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+[submodule "plugins-folder/bundle/vim-sleuth"]
+	path = plugins-folder/bundle/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth
+[submodule "plugins-folder/bundle/--force"]
+	path = plugins-folder/bundle/--force
+	url = https://github.com/isRuslan/vim-es6
+[submodule "plugins-folder/bundle/vim-gitbranch"]
+	path = plugins-folder/bundle/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch
+[submodule "plugins-folder/bundle/vim-gitgutter"]
+	path = plugins-folder/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "plugins-folder/bundle/vim-matchup"]
+	path = plugins-folder/bundle/vim-matchup
+	url = https://github.com/andymass/vim-matchup

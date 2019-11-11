@@ -1,10 +1,13 @@
 " init plugins
 execute pathogen#infect()
 
-" linhas no topo e fundo da tela
+" uses ; as leader, more handy
+let mapleader = ";"
+
+" extra lines on top and bottom of screen
 set so=7
 
-" numerando as linhas
+" numbering lines
 set number
 set relativenumber
 
@@ -13,30 +16,33 @@ set tabstop=2
 set shiftwidth=2
 set smarttab
 
-"sinaliza buscas enquanto escreve e os resultados
+" hilights search results on enter and while typing
 set incsearch
 set hlsearch
 
-"muda o diretório autmoaticamente para o arquivo atual
-
-"cores 
+" colors
 syntax on
-colorscheme onehalfdark
+colorscheme zenburn
+" Uses terminl default bg color
 hi Normal guibg=NONE ctermbg=NONE
 
-"sinaliza linha atual
+" hilights current line
 set cursorline
 
-"desabilita swaps
+" didsables swapfiles
 set noswapfile
 
-"mostra caracteres invisíveis
+" shows a list of nonprinting caracters
 set listchars=tab:\|\ ,trail:~,extends:>,precedes:<,space:·
 " set list
 
-"persistent undo
+"persistent undo TODO
 set undodir='/home/eupiteco/.vim/undo'
 set undofile
+
+" better split behavior
+set splitbelow
+set splitright
 
 " Native filetree
 let g:netrw_banner = 0
@@ -55,11 +61,6 @@ command! Srv source ~/.vimrc
 """""""""""""""
 " Keybindings "
 """""""""""""""
-" map not to junp lines
-vmap k gk
-vmap j gj
-nmap k gk
-nmap j gj
 
 " Copy to clipboard
 vmap <C-c> "+y
@@ -70,31 +71,51 @@ nmap <Leader>Q :wqa!<Enter>
 nmap <Leader>t :w<Enter>:b#<Enter>
 nmap <Leader>w :wa<Enter>
 
-" Auto parenteses, chaves e colchetes
-imap {<Return> {<Return>}<Esc>
-imap (<Return> (<Return>)<Esc>
-imap [<Return> [<Return>]<Esc>
+" Autoclose brackets, parentesis etc.
+imap {<CR> {<CR>}<Esc>
+imap (<CR> (<CR>)<Esc>
+imap [<CR> [<CR>]<Esc>
 imap {<Space> {}<Esc>i
 imap (<Space> ()<Esc>i
 imap [<Space> []<Esc>i
+imap <<Space> <><Esc>i
 imap "<Space> ""<Esc>i
 imap '<Space> ''<Esc>i
 
-" Wrap com parenteses, chaves etc
+" Wrap things on visual mode
 vmap {} c{}<Esc>P
 vmap [] c[]<Esc>P
 vmap () c()<Esc>P
 vmap "" c""<Esc>P
 vmap '' c''<Esc>P
 
+" Better split panes movement 
+nmap <C-J> <C-W><C-J>
+nmap <C-K> <C-W><C-K>
+nmap <C-L> <C-W><C-L>
+nmap <C-H> <C-W><C-H>
+
+" Open netrwtree
+nmap <Leader>d :Vex<CR>
+
+" Navigate between tabs
+nmap <Leader><Tab> gt
+
+" Open ctrlp - TODO why this does not work as a plugin setting??
+nmap <Leader>f :CtrlP<CR>
+
+" Open Ag cmd line
+nmap <Leader>F :Ag<Space>
+
 """""""""""
 " Plugins "
 """""""""""
 " CTRLP
-let g:crtlp_map = '<c-h>'
+let g:ctrlp_map = '<C-P>'
 let g:ctrlp_custom_ignore = {
 	\ 'dir': 'node_modules',
 	\}
+
 " Lightline
 let g:lightline = {
 			\'colorscheme': 'onehalfdark',

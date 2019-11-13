@@ -25,3 +25,6 @@
 [submodule "plugins-folder/bundle/vim-matchup"]
 	path = plugins-folder/bundle/vim-matchup
 	url = https://github.com/andymass/vim-matchup
+[submodule "plugins-folder/bundle/detectindent"]
+	path = plugins-folder/bundle/detectindent
+	url = https://github.com/ciaranm/detectindent

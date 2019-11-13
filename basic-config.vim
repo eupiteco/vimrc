@@ -11,7 +11,7 @@ set so=7
 set number
 set relativenumber
 
-" filetype plugin indent on
+" These will be overrided by DetectIdent
 set tabstop=2
 set shiftwidth=2
 set smarttab
@@ -57,6 +57,9 @@ let g:netrw_winsize = 15
 "use bangs so it does not warn about resetting commands
 command! Vrc vs ~/.vimrc
 command! Srv source ~/.vimrc
+
+" Automagically detects and sets indentation
+autocmd BufReadPost * :DetectIndent
 
 """""""""""""""
 " Keybindings "

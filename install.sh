@@ -9,6 +9,7 @@ _header() {
 
 _install() {
 	_header "Install"
+	[ -d ~/.vim ] || mkdir ~/.vim
 	cp -fv basic-config.vim ~/.vimrc
 	cp -rfv plugins-folder/* ~/.vim
 }
